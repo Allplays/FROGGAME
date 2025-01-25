@@ -4,12 +4,19 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     public bool Placed = false;
+    public bool mouseHovering;
     public BoundsInt area;
     public Button button;
+    public Color hoveringColor;
+    private Color originalColor;
+    [SerializeField] public GameObject sprite;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         button.onClick.AddListener(CanBePlaced);
+        spriteRenderer = sprite.GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     #region Build Methods
@@ -42,6 +49,26 @@ public class Building : MonoBehaviour
     #endregion
     void Update()
     {
-        
+
+    }
+
+    private void OnMouseOver()
+    {
+        mouseHovering = true;
+        if (Placed)
+        {
+            //Debug.Log($"El raton ha pasado");
+            
+            spriteRenderer.color = hoveringColor;
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        mouseHovering = false;
+        if (Placed)
+        {
+            spriteRenderer.color = originalColor;
+        }
     }
 }
