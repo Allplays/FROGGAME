@@ -12,26 +12,29 @@ public class GridBuildingSystem : MonoBehaviour
     public GridLayout gridLayout;
     public Tilemap MainTilemap;
     public Tilemap TempTilemap;
+    [SerializeField] public UI uiController;
 
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
 
-    private Building temp;
+    public Building temp;
     private Vector3 prevPos;
     private BoundsInt prevArea;
+    private Townhall aux;
 
     #region Unity Methods
 
     private void Awake()
     {
         current = this;
-    }
-
-    private void Start()
-    {
         tileBases.Add(TileType.White, Resources.Load<TileBase>("white"));
         tileBases.Add(TileType.Green, Resources.Load<TileBase>("green"));
         tileBases.Add(TileType.Red, Resources.Load<TileBase>("red"));
         tileBases.Add(TileType.Empty, Resources.Load<TileBase>("blue"));
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()
@@ -111,6 +114,10 @@ public class GridBuildingSystem : MonoBehaviour
     public void InitializeWithBuilding(GameObject building)
     {
         temp = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
+        UI.current.buildButton.onClick.AddListener(Building.current.CanBePlaced);
+        UI.current.unbuildButton.onClick.AddListener(Building.current.Disappear);
+        UI.current.unbuildButton.gameObject.SetActive(true);
+        UI.current.buildButton.gameObject.SetActive(true);
         FollowBuilding();
     }
 
@@ -143,8 +150,8 @@ public class GridBuildingSystem : MonoBehaviour
 
             Tile tile1 = baseArray[i] as Tile;
             Tile tile2 = tileBases[TileType.White] as Tile;
-            Debug.Log(tile1.color);
-            Debug.Log(tile2.color);
+            //Debug.Log(tile1.color);
+            //Debug.Log(tile2.color);
 
             if (tile1.color == tile2.color)
             {
@@ -179,9 +186,24 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void TakeArea(BoundsInt area)
     {
-        Debug.Log($"Entro en la funcion");
+        //Debug.Log($"Entro en la funcion");
         SetTilesBlock(area, TileType.Empty, TempTilemap);
         SetTilesBlock(area, TileType.Green, MainTilemap);
+        UI.current.buildButton.onClick.RemoveListener(Building.current.CanBePlaced);
+        UI.current.unbuildButton.onClick.RemoveListener(Building.current.Disappear);
+        UI.current.unbuildButton.gameObject.SetActive(false);
+        UI.current.buildButton.gameObject.SetActive(false);
+        temp = null;
+    }
+
+    public void UntakeArea(BoundsInt area)
+    {
+        SetTilesBlock(area, TileType.Empty, TempTilemap);
+        UI.current.buildButton.onClick.RemoveListener(Building.current.CanBePlaced);
+        UI.current.unbuildButton.onClick.RemoveListener(Building.current.Disappear);
+        UI.current.unbuildButton.gameObject.SetActive(false);
+        UI.current.buildButton.gameObject.SetActive(false);
+        temp = null;
     }
 
     #endregion

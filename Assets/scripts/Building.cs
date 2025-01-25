@@ -6,17 +6,21 @@ public class Building : MonoBehaviour
     public bool Placed = false;
     public bool mouseHovering;
     public BoundsInt area;
-    public Button button;
     public Color hoveringColor;
     private Color originalColor;
     [SerializeField] public GameObject sprite;
     private SpriteRenderer spriteRenderer;
+    public static Building current;
 
     void Start()
     {
-        button.onClick.AddListener(CanBePlaced);
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+    }
+
+    private void Awake()
+    {
+        current = this;
     }
 
     #region Build Methods
@@ -42,8 +46,6 @@ public class Building : MonoBehaviour
         areaTemp.position = positionInt;
         Placed = true;
         GridBuildingSystem.current.TakeArea(areaTemp);
-        button.onClick.RemoveListener(CanBePlaced);
-        Destroy(button.gameObject);
     }
 
     #endregion
@@ -70,5 +72,24 @@ public class Building : MonoBehaviour
         {
             spriteRenderer.color = originalColor;
         }
+    }
+
+    public bool getMouseHovering()
+    {
+        return mouseHovering;
+    }
+
+    public void Disappear()
+    {
+        Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
+        BoundsInt areaTemp = area;
+        areaTemp.position = positionInt;
+        GridBuildingSystem.current.UntakeArea(areaTemp);
+        UI.current.CloseMenu();
+        //canvas.ac
+        //placeButton.gameObject
+        //disappearButton.gameObject
+        //sprite
+        //current
     }
 }
