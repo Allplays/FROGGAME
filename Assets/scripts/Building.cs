@@ -11,12 +11,18 @@ public class Building : MonoBehaviour
     private Color originalColor;
     [SerializeField] public GameObject sprite;
     private SpriteRenderer spriteRenderer;
+    public static Building current;
 
     void Start()
     {
         button.onClick.AddListener(CanBePlaced);
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+    }
+
+    private void Awake()
+    {
+        current = this;
     }
 
     #region Build Methods
@@ -70,5 +76,10 @@ public class Building : MonoBehaviour
         {
             spriteRenderer.color = originalColor;
         }
+    }
+
+    public bool getMouseHovering()
+    {
+        return mouseHovering;
     }
 }
