@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      caja con sombra_0: 1295779420102882480
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

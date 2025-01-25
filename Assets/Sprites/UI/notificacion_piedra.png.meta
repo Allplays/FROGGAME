@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      notificacion_piedra_0: 5911440029222769994
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

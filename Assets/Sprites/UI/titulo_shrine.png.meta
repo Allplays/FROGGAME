@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      titulo_shrine_0: -3726056762707113454
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

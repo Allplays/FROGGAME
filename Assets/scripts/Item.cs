@@ -49,6 +49,12 @@ public class Item : MonoBehaviour
     {
     }
 
+    public void PickUp()
+    {
+        Debug.Log($"Picked up {itemType}!");
+        Destroy(gameObject);
+    }
+
     public SpriteRenderer GetSpriteRenderer()
     {
         return spriteRenderer;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public float pickupRadius = 3f;
+    public float pickUpRadius = 3f;
     public InventoryManager inventoryManager;
 
     void Update()
@@ -12,14 +12,19 @@ public class Inventory : MonoBehaviour
 
     private void DetectNearbyItems()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, pickupRadius);
+        // Shitty ass method iterates over all items
+        // Could not get the collisions to behave properly :/
 
-        foreach (var collider in colliders)
+        Item[] items = FindObjectsOfType<Item>();
+
+        foreach (var item in items)
         {
-            Item item = collider.GetComponent<Item>();
-            if (item != null)
+            float distance = Vector3.Distance(transform.position, item.transform.position);
+
+            if (distance <= pickUpRadius)
             {
-                PickUpItem(item);
+                item.PickUp();
+                Debug.Log($"Item {item.itemType} is within range at a distance of {distance} meters.");
             }
         }
     }
@@ -36,6 +41,6 @@ public class Inventory : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, pickupRadius);
+        Gizmos.DrawWireSphere(transform.position, pickUpRadius);
     }
 }
