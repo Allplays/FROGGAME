@@ -14,6 +14,7 @@ public class UIcontroller : MonoBehaviour
     [SerializeField] public GameObject MarcoSprite;
     private SpriteRenderer marcoRenderer;
 
+
     private void Awake()
     {
         current = this;

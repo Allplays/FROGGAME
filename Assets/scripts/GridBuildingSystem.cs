@@ -16,7 +16,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
 
-    private Building temp;
+    public Building temp;
     private Vector3 prevPos;
     private BoundsInt prevArea;
     private Townhall aux;
@@ -26,14 +26,15 @@ public class GridBuildingSystem : MonoBehaviour
     private void Awake()
     {
         current = this;
-    }
-
-    private void Start()
-    {
         tileBases.Add(TileType.White, Resources.Load<TileBase>("white"));
         tileBases.Add(TileType.Green, Resources.Load<TileBase>("green"));
         tileBases.Add(TileType.Red, Resources.Load<TileBase>("red"));
         tileBases.Add(TileType.Empty, Resources.Load<TileBase>("blue"));
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()
@@ -113,8 +114,10 @@ public class GridBuildingSystem : MonoBehaviour
     public void InitializeWithBuilding(GameObject building)
     {
         temp = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
-        aux = temp.GetComponent<Townhall>();
-        aux.uiController = uiController;
+        UI.current.buildButton.onClick.AddListener(Building.current.CanBePlaced);
+        UI.current.unbuildButton.onClick.AddListener(Building.current.Disappear);
+        UI.current.unbuildButton.gameObject.SetActive(true);
+        UI.current.buildButton.gameObject.SetActive(true);
         FollowBuilding();
     }
 
@@ -186,6 +189,21 @@ public class GridBuildingSystem : MonoBehaviour
         //Debug.Log($"Entro en la funcion");
         SetTilesBlock(area, TileType.Empty, TempTilemap);
         SetTilesBlock(area, TileType.Green, MainTilemap);
+        UI.current.buildButton.onClick.RemoveListener(Building.current.CanBePlaced);
+        UI.current.unbuildButton.onClick.RemoveListener(Building.current.Disappear);
+        UI.current.unbuildButton.gameObject.SetActive(false);
+        UI.current.buildButton.gameObject.SetActive(false);
+        temp = null;
+    }
+
+    public void UntakeArea(BoundsInt area)
+    {
+        SetTilesBlock(area, TileType.Empty, TempTilemap);
+        UI.current.buildButton.onClick.RemoveListener(Building.current.CanBePlaced);
+        UI.current.unbuildButton.onClick.RemoveListener(Building.current.Disappear);
+        UI.current.unbuildButton.gameObject.SetActive(false);
+        UI.current.buildButton.gameObject.SetActive(false);
+        temp = null;
     }
 
     #endregion

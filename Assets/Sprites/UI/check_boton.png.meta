@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b8d04b8cb54f9b546aa16d33795abd5a
+guid: 2c82e8d92ca074648b9c62f8239c9143
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -144416076645040367
-    second: titulo_contruction_0
+      213: 8530130590104654285
+    second: check_boton_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: titulo_contruction_0
+      name: check_boton_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2301
-        height: 246
+        x: 1059
+        y: 1106
+        width: 157
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11f77bbe75eeefdf0800000000000000
-      internalID: -144416076645040367
+      spriteID: dc191eeb39c116670800000000000000
+      internalID: 8530130590104654285
       vertices: []
       indices: 
       edges: []

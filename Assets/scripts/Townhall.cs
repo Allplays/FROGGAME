@@ -4,8 +4,6 @@ public class Townhall : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static Townhall current;
-
-    public UI uiController;
     void Start()
     {
         
