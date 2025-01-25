@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "caja_pequen\u0303a_recetas_0": -6653775018274126346
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Frog : MonoBehaviour
+public class Frogs : MonoBehaviour
 {
     [SerializeField] private GameObject animeGirl; // Referencia al objeto AnimeGirl
     [SerializeField] private float followSpeed = 2.5f; // Velocidad de seguimiento
@@ -38,9 +38,9 @@ public class Frog : MonoBehaviour
 
     private void MaintainDistanceBetweenFrogs()
     {
-        Frog[] allFrogs = FindObjectsOfType<Frog>();
+        Frogs[] allFrogs = FindObjectsOfType<Frogs>();
 
-        foreach (Frog otherFrog in allFrogs)
+        foreach (Frogs otherFrog in allFrogs)
         {
             if (otherFrog != this)
             {

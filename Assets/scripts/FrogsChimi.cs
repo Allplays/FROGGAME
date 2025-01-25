@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FrogChimi : MonoBehaviour
+public class FrogsChimi : MonoBehaviour
 {
     [SerializeField] private GameObject animeGirl; // Referencia al objeto AnimeGirl
     [SerializeField] private float followSpeed = 2.5f; // Velocidad de seguimiento
@@ -44,9 +44,9 @@ public class FrogChimi : MonoBehaviour
     private void MaintainDistanceBetweenFrogs()
     {
         // Obtener todas las ranitas en la escena
-        FrogChimi[] allFrogs = FindObjectsOfType<FrogChimi>();
+        FrogsChimi[] allFrogs = FindObjectsOfType<FrogsChimi>();
 
-        foreach (FrogChimi otherFrog in allFrogs)
+        foreach (FrogsChimi otherFrog in allFrogs)
         {
             if (otherFrog != this) // No queremos calcular la distancia consigo misma
             {
