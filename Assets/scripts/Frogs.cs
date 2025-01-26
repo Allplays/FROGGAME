@@ -4,6 +4,7 @@ public class Frogs : MonoBehaviour
 {
     [SerializeField] private GameObject animeGirl;
     [SerializeField] private GameObject poopPrefab;
+    [SerializeField] private GameObject rotObjectToDestroy; 
     [SerializeField] private float speed = 2f;
     [SerializeField] private float poopDelay = 5f;
 
@@ -13,30 +14,30 @@ public class Frogs : MonoBehaviour
     private bool isDropped = false;
     private float poopTimer = 0f;
 
-    // Añadimos la referencia al Animator
     private Animator frogAnimator;
+
+    private bool isCollidingWithRot = false; 
+    private float rotDestructionTimer = 0f; 
 
     void Start()
     {
-        // Obtenemos el componente Animator
         frogAnimator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Actualizamos las condiciones para las animaciones
+        
         if (isBeingDragged)
         {
-            frogAnimator.SetBool("isDragged", true); // Cambia a la animación FrogDragging
+            frogAnimator.SetBool("isDragged", true);
         }
         else
         {
-            frogAnimator.SetBool("isDragged", false); // Vuelve a Idle o la animación que se tenga
+            frogAnimator.SetBool("isDragged", false);
         }
 
         if (isDropped)
         {
-            // Aquí iniciamos la animación de comer mientras esperamos la caca
             frogAnimator.SetBool("isEating", true);
             poopTimer += Time.deltaTime;
             if (poopTimer >= poopDelay)
@@ -44,21 +45,32 @@ public class Frogs : MonoBehaviour
                 SpawnPoop();
                 poopTimer = 0f;
                 isDropped = false;
-                frogAnimator.SetBool("isEating", false); // Regresa a la animación Idle u otra
+                frogAnimator.SetBool("isEating", false);
             }
         }
 
         if (!isBeingDragged && !isDropped)
         {
-            // Deja de comer si no está siendo arrastrada ni esperando la caca
             frogAnimator.SetBool("isEating", false);
         }
 
-        // Lógica para mover la rana hacia la chica
+        
         distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
         if (distanceBetween >= 3)
         {
             transform.position = Vector2.MoveTowards(transform.position, animeGirl.transform.position, speed * Time.deltaTime);
+        }
+
+
+        if (isCollidingWithRot && rotObjectToDestroy != null)
+        {
+            rotDestructionTimer += Time.deltaTime;
+            if (rotDestructionTimer >= 3f) 
+            {
+                Destroy(rotObjectToDestroy);
+                isCollidingWithRot = false; 
+                rotDestructionTimer = 0f; 
+            }
         }
     }
 
@@ -86,6 +98,24 @@ public class Frogs : MonoBehaviour
             isBeingDragged = false;
             isDropped = true;
             poopTimer = 0f;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == rotObjectToDestroy) 
+        {
+            isCollidingWithRot = true; 
+            rotDestructionTimer = 0f; 
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject == rotObjectToDestroy)
+        {
+            isCollidingWithRot = false; 
+            rotDestructionTimer = 0f; 
         }
     }
 
