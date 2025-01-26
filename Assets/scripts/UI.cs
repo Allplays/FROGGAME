@@ -13,6 +13,7 @@ public class UI : MonoBehaviour
     private string menuUp = "noMenu";
 
     public GameObject buildingPrefab;
+    public GameObject frogPrefab;
 
     public GameObject Grid;
     public GameObject MainTilemap;
@@ -169,7 +170,12 @@ public class UI : MonoBehaviour
                 MenuRecipes["townhall"].Remove(unlockableKeys[numero - 1]);
                 CloseMenu();
                 break;
-
+            case "shrine":
+                string[] frogKeys = MenuRecipes["shrine"].Keys.ToArray();
+                frogPrefab = Resources.Load<GameObject>(frogKeys[numero - 1]);
+                Instantiate(frogPrefab, Vector3.zero, Quaternion.identity);
+                CloseMenu();
+                break;
         }
         
 
