@@ -12,7 +12,7 @@ public class MainCamera : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(
-            Mathf.Clamp(targetFollow.position.x, -1.5f, 14f),
+            Mathf.Clamp(targetFollow.position.x, 1f, 10f),
             Mathf.Clamp(targetFollow.position.y, -3.5f, 6f),
             transform.position.z
             );
