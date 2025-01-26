@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CacaLennon
   - Rot
+  - Palo
+  - sap
+  - stone
   layers:
   - Default
   - TransparentFX

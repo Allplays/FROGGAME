@@ -1,48 +1,56 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
-    public float pickUpRadius = 3f;
-    public InventoryManager inventoryManager;
+    [SerializeField] private float pickupRadius = 1f;
+
+    private Dictionary<string, int> inventory = new Dictionary<string, int>(); 
+
+    void Start()
+    {
+        
+        inventory["CacaLennon"] = 0;
+        inventory["Palo"] = 0;
+        inventory["sap"] = 0;
+        inventory["stone"] = 0;
+    }
 
     void Update()
     {
-        DetectNearbyItems();
+        DetectAndPickupObjects();
     }
 
-    private void DetectNearbyItems()
+    private void DetectAndPickupObjects()
     {
-        // Shitty ass method iterates over all items
-        // Could not get the collisions to behave properly :/
-        
-        Item[] items = ItemList.current.GetItems();
-        Debug.Log(items.Length);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, pickupRadius);
 
-        foreach (var item in items)
+        foreach (Collider2D hitCollider in hitColliders)
         {
-            float distance = Vector3.Distance(transform.position, item.transform.position);
-
-            if (distance <= pickUpRadius)
+            if (hitCollider != null && hitCollider.gameObject != null)
             {
-                item.PickUp();
-                InventoryManager.current.AddItem(item.itemType, 1);
-                Debug.Log($"Item {item.itemType} is within range at a distance of {distance} meters.");
+                string objectTag = hitCollider.tag; 
+
+                
+                if (inventory.ContainsKey(objectTag))
+                {
+                    Destroy(hitCollider.gameObject); 
+                    inventory[objectTag]++; 
+                    Debug.Log($"{objectTag} collected! Total: {inventory[objectTag]}");
+                }
             }
         }
     }
 
-    private void PickUpItem(Item item)
+    public int GetItemCount(string itemTag)
     {
-        if (inventoryManager.AddItem(item.itemType, 1))
-        {
-            Debug.Log($"Picked up {item.itemType}");
-            item.PickUp();
-        }
+        
+        return inventory.ContainsKey(itemTag) ? inventory[itemTag] : 0;
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, pickUpRadius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, pickupRadius);
     }
 }

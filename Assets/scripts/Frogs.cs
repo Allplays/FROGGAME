@@ -29,7 +29,7 @@ public class Frogs : MonoBehaviour
 
     void Update()
     {
-        // Animación de "isDragged"
+        
         frogAnimator.SetBool("isDragged", isBeingDragged);
 
         if (isDropped && isNearRot)
@@ -47,8 +47,8 @@ public class Frogs : MonoBehaviour
 
                 if (currentRot != null)
                 {
-                    Destroy(currentRot); // Destruir el objeto "Rot" que está cerca
-                    currentRot = null; // Reiniciar la referencia
+                    Destroy(currentRot); 
+                    currentRot = null; 
                     isNearRot = false;
                     idleSfx.Play();
                 }
@@ -65,7 +65,7 @@ public class Frogs : MonoBehaviour
             { idleSfx.Play(); }
         }
 
-        // Movimiento automático hacia "animeGirl"
+        
         distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
         if (distanceBetween >= 3 && !isBeingDragged && !isDropped)
         {
@@ -92,8 +92,12 @@ public class Frogs : MonoBehaviour
         if (isBeingDragged)
         {
             isBeingDragged = false;
+<<<<<<< HEAD
+            isDropped = true; 
+=======
             isDropped = true; // Marca que se soltó
             idleSfx.Play();
+>>>>>>> 253bbb01d43da9998fa17119d91023aac2a3ba0e
         }
         if (isNearRot)
         { munchSfx.Play(); idleSfx.Stop(); }
@@ -101,11 +105,15 @@ public class Frogs : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Rot")) // Verifica si el objeto tiene el tag "Rot"
+        if (collision.CompareTag("Rot")) 
         {
             isNearRot = true;
+<<<<<<< HEAD
+            currentRot = collision.gameObject; 
+=======
             currentRot = collision.gameObject; // Guarda el objeto "Rot" con el que está colisionando
             
+>>>>>>> 253bbb01d43da9998fa17119d91023aac2a3ba0e
         }
     }
 
@@ -114,9 +122,13 @@ public class Frogs : MonoBehaviour
         if (collision.CompareTag("Rot"))
         {
             isNearRot = false;
+<<<<<<< HEAD
+            currentRot = null; 
+=======
             currentRot = null; // Limpia la referencia del objeto "Rot"
             munchSfx.Stop();
             idleSfx.Play();
+>>>>>>> 253bbb01d43da9998fa17119d91023aac2a3ba0e
         }
     }
 
