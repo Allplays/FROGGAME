@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0b2255f70e267cb42a27df373c9f86fe
+guid: 24ca48040d69b7741bf5a19bbc6bd299
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1152812806179444027
-    second: townhall_0
+      213: -2588854250042220440
+    second: turret 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: townhall_0
+      name: turret 1_0
       rect:
         serializedVersion: 2
-        x: 257
-        y: 105
-        width: 1484
-        height: 1886
-      alignment: 9
-      pivot: {x: 0.4896964, y: 0.20002687}
+        x: 394
+        y: 165
+        width: 1288
+        height: 1583
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ca27235cd26000f0800000000000000
-      internalID: -1152812806179444027
+      spriteID: 86029f2a6ca821cd0800000000000000
+      internalID: -2588854250042220440
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2d3b17697fedc6648824001a302e6b57
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      townhall_0: -1152812806179444027
+      turret 1_0: -2588854250042220440
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

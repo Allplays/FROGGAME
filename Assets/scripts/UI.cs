@@ -153,7 +153,7 @@ public class UI : MonoBehaviour
                 MainTilemap.SetActive(true);
                 TempTilemap.SetActive(true);
                 string[] buildingKeys = MenuRecipes["building"].Keys.ToArray();
-                Debug.Log(buildingKeys[numero - 1]);
+                Debug.Log(Resources.Load<GameObject>(buildingKeys[numero - 1]));
                 buildingPrefab = Resources.Load<GameObject>(buildingKeys[numero - 1]);
                 GridBuildingSystem.current.InitializeWithBuilding(buildingPrefab);
                 break;
