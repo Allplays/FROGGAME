@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "notificacio\u0301n_savia_0": 1289557841805098736
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

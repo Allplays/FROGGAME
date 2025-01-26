@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      titulo_townhall_0: 1128128410849705829
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

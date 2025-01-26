@@ -118,6 +118,7 @@ public class UI : MonoBehaviour
 
     public void CheckCraft(int numero)
     {
+        /*
         //Debug.Log(numero);
         string[] keys = MenuRecipes[menuUp].Keys.ToArray();
         if (numero > keys.Length)
@@ -165,6 +166,7 @@ public class UI : MonoBehaviour
                 break;
 
         }
+        */
 
     }
 

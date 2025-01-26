@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rotar_boton_0: 8502305404671442181
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
