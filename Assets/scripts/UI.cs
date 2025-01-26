@@ -9,6 +9,9 @@ using UnityEngine.UIElements;
 
 public class UI : MonoBehaviour
 {
+    private float enemyCounter = 0;
+    public GameObject enemyPrefab;
+
     public static UI current;
 
     public string menuUp = "noMenu";
@@ -113,6 +116,14 @@ public class UI : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.B) & menuUp == "noMenu")
         {
             OpenMenu($"building");
+        }
+        enemyCounter += Time.deltaTime;
+        if (enemyCounter > 10)
+        {
+            enemyCounter = 0;
+            float randomNumber1 = UnityEngine.Random.Range(0f, 3.14f);
+            float randomNumber2 = UnityEngine.Random.Range(0f, 3.14f);
+            Instantiate(enemyPrefab, new Vector3(Mathf.Cos(randomNumber1)*20, Mathf.Sin(randomNumber2), 1)*20, Quaternion.identity);
         }
     }
 
