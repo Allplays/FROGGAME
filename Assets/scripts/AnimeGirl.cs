@@ -4,6 +4,7 @@ public class AnimeGirl : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento
     [SerializeField] private Animator animator; // Referencia al Animator del personaje
+    [SerializeField] AudioSource animeGirlStepSfx;
 
     void Update()
     {
@@ -43,5 +44,7 @@ public class AnimeGirl : MonoBehaviour
         animator.SetBool("isMovingDown", isMovingDown);  // Activar animación de moverse hacia abajo
         animator.SetBool("isMovingLeft", isMovingLeft);  // Activar animación de moverse hacia la izquierda
         animator.SetBool("isMovingRight", isMovingRight);  // Activar animación de moverse hacia la derecha
+
+        while (moveSpeed > 0) {animeGirlStepSfx.Play(); }
     }
 }

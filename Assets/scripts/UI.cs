@@ -32,6 +32,7 @@ public class UI : MonoBehaviour
 
     int pipipopo;
 
+    [SerializeField] AudioSource openMenuSfx;
     private void Awake()
     {
         current = this;
@@ -102,6 +103,8 @@ public class UI : MonoBehaviour
         background.SetActive(true);
         marco.SetActive(true);
         sprite.SetActive(true);
+
+        openMenuSfx.Play();
 
         ButtonsSwitch(true, MenuRecipes[menuUp].Keys.ToArray().Length, true);
     }

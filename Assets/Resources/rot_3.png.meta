@@ -125,86 +125,20 @@ TextureImporter:
       name: rot_3_0
       rect:
         serializedVersion: 2
-        x: 3661
-        y: 1013
-        width: 179
-        height: 342
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3af75e2435335d8d0800000000000000
-      internalID: -2822293158780108893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rot_3_1
-      rect:
-        serializedVersion: 2
-        x: 3439
-        y: 826
-        width: 23
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3b4e11204cce96cb0800000000000000
-      internalID: -4870101195432008525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rot_3_2
-      rect:
-        serializedVersion: 2
-        x: 3791
-        y: 747
-        width: 49
-        height: 180
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 25ab67b4fef070b90800000000000000
-      internalID: -7275829152556074414
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rot_3_3
-      rect:
-        serializedVersion: 2
-        x: 2743
+        x: 2693
         y: 0
-        width: 1097
-        height: 814
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1147
+        height: 1364
+      alignment: 9
+      pivot: {x: 0.51700085, y: 0.3277126}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0af0b015edba37680800000000000000
-      internalID: -8758467878974713952
+      spriteID: 0223d1f7abce16748a7b3d895f12fb90
+      internalID: 748942919
       vertices: []
       indices: 
       edges: []
@@ -213,7 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f851bd9069445ff448486765453f7bcb
     internalID: 0
     vertices: []
     indices: 
@@ -222,7 +156,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rot_3_0: 748942919
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

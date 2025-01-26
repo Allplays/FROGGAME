@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class shrine : MonoBehaviour
 {
+    [SerializeField] AudioSource openShrineSfx;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +17,7 @@ public class shrine : MonoBehaviour
             Debug.Log($"Has clickado el shrine");
             UI.current.OpenMenu($"shrine");
 
+            openShrineSfx.Play();
         }
     }
 }

@@ -122,64 +122,20 @@ TextureImporter:
       name: rot_2_0
       rect:
         serializedVersion: 2
-        x: 3432
-        y: 758
-        width: 298
-        height: 327
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3f850227ad804d9a0800000000000000
-      internalID: -6209328251926456077
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rot_2_1
-      rect:
-        serializedVersion: 2
-        x: 3655
-        y: 689
-        width: 185
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8003ea1b9b820f3f0800000000000000
-      internalID: -869149950067462136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rot_2_2
-      rect:
-        serializedVersion: 2
-        x: 2751
+        x: 0
         y: 0
-        width: 1089
-        height: 705
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 3840
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.85937506, y: 0.20601851}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4f57e394a21488f30800000000000000
-      internalID: 4577980671095371252
+      spriteID: 2bffa5829d9ddc649832ebdcebdb8a83
+      internalID: 1938080024
       vertices: []
       indices: 
       edges: []
@@ -188,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7cc8cd0d6bdbee5419d2b00f6a04a1de
     internalID: 0
     vertices: []
     indices: 
@@ -197,7 +153,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rot_2_0: 1938080024
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -15,6 +15,7 @@ public class Building : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public static Building current;
 
+    [SerializeField] AudioSource buildSuccessSfx;
     void Start()
     {
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
@@ -52,6 +53,7 @@ public class Building : MonoBehaviour
         UI.current.CloseMenu();
         Destroy(placeButton.gameObject);
         Destroy(disappearButton.gameObject);
+        buildSuccessSfx.Play();
     }
 
     #endregion
