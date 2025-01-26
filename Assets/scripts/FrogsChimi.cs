@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class FrogsChimi : MonoBehaviour
 {
@@ -128,3 +128,4 @@ public class FrogsChimi : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, collectRadius);
     }
 }
+*/

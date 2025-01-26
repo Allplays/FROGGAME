@@ -1,105 +1,86 @@
 using UnityEngine;
+using System.Collections;
 
 public class Frogs : MonoBehaviour
 {
-    [SerializeField] private GameObject animeGirl; // Referencia al objeto AnimeGirl
-    [SerializeField] private float followSpeed = 2.5f; // Velocidad de seguimiento
-    [SerializeField] private float followDistance = 1.5f; // Distancia mínima para mantener con AnimeGirl
-    [SerializeField] private float minDistanceBetweenFrogs = 1.2f; // Distancia mínima entre ranitas
-    [SerializeField] private float separationForce = 2f; // Fuerza de separación entre ranitas
-    [SerializeField] private GameObject cacaPrefab; // Prefab de la caca que será instanciada
-    private bool isBeingDragged = false; // Indica si la rana está siendo arrastrada
-    private bool shouldFollowAnimeGirl = true; // Controla si la rana debe seguir a AnimeGirl
-    private Vector3 offset; // Diferencia entre el mouse y la rana para arrastrar correctamente
-    private float reFollowRange = 2f; // Rango para volver a seguir a la Anime Girl
+    [SerializeField] private GameObject animeGirl; 
+    [SerializeField] private GameObject poopPrefab; 
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float poopDelay = 5f; 
+
+    private float distanceBetween;  
+    Vector3 offset;
+    private bool isBeingDragged = false; 
+    private bool isDropped = false;
+    private float poopTimer = 0f; 
+
 
     void Update()
     {
-        if (!isBeingDragged && shouldFollowAnimeGirl && animeGirl != null)
+        if (!isBeingDragged && !isDropped) 
         {
-            FollowAnimeGirl();
-        }
-
-        // Asegurar distancia mínima entre ranitas
-        MaintainDistanceBetweenFrogs();
-    }
-
-    void FollowAnimeGirl()
-    {
-        float currentDistance = Vector3.Distance(transform.position, animeGirl.transform.position);
-
-        if (currentDistance > followDistance)
-        {
-            Vector3 direction = (animeGirl.transform.position - transform.position).normalized;
-            Vector3 targetPosition = animeGirl.transform.position - direction * followDistance;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * followSpeed);
-        }
-    }
-
-    private void MaintainDistanceBetweenFrogs()
-    {
-        Frogs[] allFrogs = FindObjectsOfType<Frogs>();
-
-        foreach (Frogs otherFrog in allFrogs)
-        {
-            if (otherFrog != this)
+            distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
+            if (distanceBetween >= 3)
             {
-                float distance = Vector3.Distance(transform.position, otherFrog.transform.position);
+                transform.position = Vector2.MoveTowards(transform.position, animeGirl.transform.position, speed * Time.deltaTime);
+            }
+        }
 
-                if (distance < minDistanceBetweenFrogs)
-                {
-                    Vector3 separationDirection = (transform.position - otherFrog.transform.position).normalized;
-                    transform.position += separationDirection * separationForce * Time.deltaTime;
-                }
+        if (isDropped)
+        {
+            poopTimer += Time.deltaTime;
+            if (poopTimer >= poopDelay) 
+            {
+                SpawnPoop();
+                poopTimer = 0f; 
+                isDropped = false; 
             }
         }
     }
 
-    private void OnMouseDown()
+    void OnMouseDown()
     {
-        offset = transform.position - GetMouseWorldPosition();
-        isBeingDragged = true;
-        shouldFollowAnimeGirl = false; // Detenemos el seguimiento
-    }
-
-    private void OnMouseDrag()
-    {
-        transform.position = GetMouseWorldPosition() + offset;
-    }
-
-    private void OnMouseUp()
-    {
-        isBeingDragged = false;
-
-        // Generar una caca al soltar
-        Poop();
-
-        // Detectar si la rana está cerca de la Anime Girl
-        float distanceToAnimeGirl = Vector3.Distance(transform.position, animeGirl.transform.position);
-        if (distanceToAnimeGirl <= reFollowRange)
+        if (!isDropped) 
         {
-            // Si está cerca de la Anime Girl, reanudar el seguimiento
-            shouldFollowAnimeGirl = true;
+            isBeingDragged = true;
+            offset = transform.position - GetMouseWorldPosition();
         }
     }
 
-    private void Poop()
+    void OnMouseDrag()
     {
-        if (cacaPrefab != null)
+        if (isBeingDragged)
         {
-            Vector3 poopPosition = transform.position + Vector3.down * 0.5f;
-            Instantiate(cacaPrefab, poopPosition, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning("Caca prefab no asignado en el inspector.");
+            transform.position = GetMouseWorldPosition() + offset;
         }
     }
 
-    private Vector3 GetMouseWorldPosition()
+    void OnMouseUp()
+    {
+        if (isBeingDragged) 
+        {
+            isBeingDragged = false;
+            isDropped = true;
+            poopTimer = 0f;
+        }
+    }
+
+    Vector3 GetMouseWorldPosition()
     {
         Vector3 mousePoint = Input.mousePosition;
         mousePoint.z = Camera.main.WorldToScreenPoint(transform.position).z;
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
+
+    private void SpawnPoop()
+    {
+        if (poopPrefab != null)
+        {
+            Vector3 poopPosition = transform.position + Vector3.down * 0.5f;
+            Instantiate(poopPrefab, poopPosition, Quaternion.identity);
+        }
+    }
 }
+   
+
+  
