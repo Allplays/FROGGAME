@@ -4,9 +4,9 @@ public class Frogs : MonoBehaviour
 {
     [SerializeField] private GameObject animeGirl;
     [SerializeField] private GameObject poopPrefab;
-    [SerializeField] private GameObject rotObjectToDestroy;
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float poopDelay = 5f;
+    [SerializeField] private float poopDelay = 4f;
+
     private float distanceBetween;
     private Vector3 offset;
     private bool isBeingDragged = false;
@@ -14,8 +14,7 @@ public class Frogs : MonoBehaviour
     private float poopTimer = 0f;
     private Animator frogAnimator;
     private bool isNearRot = false;
-    private bool isCollidingWithRot = false;
-    private float rotDestructionTimer = 0f;
+    private GameObject currentRot = null;
 
     void Start()
     {
@@ -24,10 +23,8 @@ public class Frogs : MonoBehaviour
 
     void Update()
     {
-        if (isBeingDragged)
-            frogAnimator.SetBool("isDragged", true);
-        else
-            frogAnimator.SetBool("isDragged", false);
+        // Animación de "isDragged"
+        frogAnimator.SetBool("isDragged", isBeingDragged);
 
         if (isDropped && isNearRot)
         {
@@ -41,11 +38,11 @@ public class Frogs : MonoBehaviour
                 isDropped = false;
                 frogAnimator.SetBool("isEating", false);
 
-                if (isCollidingWithRot && rotObjectToDestroy != null)
+                if (currentRot != null)
                 {
-                    Destroy(rotObjectToDestroy);
+                    Destroy(currentRot); // Destruir el objeto "Rot" que está cerca
+                    currentRot = null; // Reiniciar la referencia
                     isNearRot = false;
-                    isCollidingWithRot = false;
                 }
             }
         }
@@ -55,6 +52,8 @@ public class Frogs : MonoBehaviour
             poopTimer = 0f;
             isDropped = false;
         }
+
+        // Movimiento automático hacia "animeGirl"
         distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
         if (distanceBetween >= 3 && !isBeingDragged && !isDropped)
         {
@@ -76,7 +75,6 @@ public class Frogs : MonoBehaviour
 
     void OnMouseUp()
     {
-        // Suelta la rana
         if (isBeingDragged)
         {
             isBeingDragged = false;
@@ -86,21 +84,19 @@ public class Frogs : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == rotObjectToDestroy)
+        if (collision.CompareTag("Rot")) // Verifica si el objeto tiene el tag "Rot"
         {
             isNearRot = true;
-            isCollidingWithRot = true;
-            rotDestructionTimer = 0f;
+            currentRot = collision.gameObject; // Guarda el objeto "Rot" con el que está colisionando
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject == rotObjectToDestroy)
+        if (collision.CompareTag("Rot"))
         {
             isNearRot = false;
-            isCollidingWithRot = false;
-            rotDestructionTimer = 0f;
+            currentRot = null; // Limpia la referencia del objeto "Rot"
         }
     }
 

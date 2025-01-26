@@ -97,7 +97,7 @@ public class UI : MonoBehaviour
 
     public void OpenMenu(string title)
     {
-        //Debug.Log("Pasamos a" + title);
+        Debug.Log("Pasamos a" + title);
         menuUp = title;
         titleRenderer.sprite = Resources.Load<Sprite>($"titulo_" + title);
         background.SetActive(true);
@@ -105,7 +105,7 @@ public class UI : MonoBehaviour
         sprite.SetActive(true);
 
         openMenuSfx.Play();
-
+        Debug.Log(MenuRecipes[menuUp].Keys.ToArray().Length);
         ButtonsSwitch(true, MenuRecipes[menuUp].Keys.ToArray().Length, true);
     }
 
@@ -142,7 +142,7 @@ public class UI : MonoBehaviour
                 //Debug.Log(i);
                 //Debug.Log(Inventory.current.holding[i]);
                 //Debug.Log(MenuRecipes[menuUp][keys[numero - 1]][i]);
-            //   return;
+               //return;
             //}
         }
 
