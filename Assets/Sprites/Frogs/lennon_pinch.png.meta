@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b3cea771d8db614429864eb0a9c87566
+guid: 5a03bd1e9c261be4494c4c74c6440e97
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2601609734493720344
-    second: LennonRana2_0
+      213: -5325199245356777424
+    second: lennon_pinch_0
+  - first:
+      213: -8075722125791051964
+    second: lennon_pinch_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1000
+  spritePixelsToUnits: 3000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LennonRana2_0
+      name: lennon_pinch_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 586
-        height: 568
+        x: 355
+        y: 57
+        width: 1251
+        height: 1639
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8e0bd4bfab935ebd0800000000000000
-      internalID: -2601609734493720344
+      spriteID: 030c45e10871916b0800000000000000
+      internalID: -5325199245356777424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lennon_pinch_1
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 465
+        width: 42
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44f367b73854def80800000000000000
+      internalID: -8075722125791051964
       vertices: []
       indices: 
       edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LennonRana2_0: -2601609734493720344
+      lennon_pinch_0: -5325199245356777424
+      lennon_pinch_1: -8075722125791051964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

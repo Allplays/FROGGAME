@@ -1,46 +1,70 @@
 using UnityEngine;
-using System.Collections;
 
 public class Frogs : MonoBehaviour
 {
-    [SerializeField] private GameObject animeGirl; 
-    [SerializeField] private GameObject poopPrefab; 
+    [SerializeField] private GameObject animeGirl;
+    [SerializeField] private GameObject poopPrefab;
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float poopDelay = 5f; 
+    [SerializeField] private float poopDelay = 5f;
 
-    private float distanceBetween;  
+    private float distanceBetween;
     Vector3 offset;
-    private bool isBeingDragged = false; 
+    private bool isBeingDragged = false;
     private bool isDropped = false;
-    private float poopTimer = 0f; 
+    private float poopTimer = 0f;
 
+    // Añadimos la referencia al Animator
+    private Animator frogAnimator;
+
+    void Start()
+    {
+        // Obtenemos el componente Animator
+        frogAnimator = GetComponent<Animator>();
+    }
 
     void Update()
     {
-        if (!isBeingDragged && !isDropped) 
+        // Actualizamos las condiciones para las animaciones
+        if (isBeingDragged)
         {
-            distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
-            if (distanceBetween >= 3)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, animeGirl.transform.position, speed * Time.deltaTime);
-            }
+            frogAnimator.SetBool("isDragged", true); // Cambia a la animación FrogDragging
+        }
+        else
+        {
+            frogAnimator.SetBool("isDragged", false); // Vuelve a Idle o la animación que se tenga
         }
 
         if (isDropped)
         {
+            // Aquí iniciamos la animación de comer mientras esperamos la caca
+            frogAnimator.SetBool("isEating", true);
             poopTimer += Time.deltaTime;
-            if (poopTimer >= poopDelay) 
+            if (poopTimer >= poopDelay)
             {
                 SpawnPoop();
-                poopTimer = 0f; 
-                isDropped = false; 
+                poopTimer = 0f;
+                isDropped = false;
+                frogAnimator.SetBool("isEating", false); // Regresa a la animación Idle u otra
             }
+        }
+
+        if (!isBeingDragged && !isDropped)
+        {
+            // Deja de comer si no está siendo arrastrada ni esperando la caca
+            frogAnimator.SetBool("isEating", false);
+        }
+
+        // Lógica para mover la rana hacia la chica
+        distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
+        if (distanceBetween >= 3)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, animeGirl.transform.position, speed * Time.deltaTime);
         }
     }
 
     void OnMouseDown()
     {
-        if (!isDropped) 
+        if (!isDropped)
         {
             isBeingDragged = true;
             offset = transform.position - GetMouseWorldPosition();
@@ -57,7 +81,7 @@ public class Frogs : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (isBeingDragged) 
+        if (isBeingDragged)
         {
             isBeingDragged = false;
             isDropped = true;
@@ -81,6 +105,3 @@ public class Frogs : MonoBehaviour
         }
     }
 }
-   
-
-  
