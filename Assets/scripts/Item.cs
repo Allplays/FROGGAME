@@ -17,12 +17,10 @@ public class Item : MonoBehaviour
     public Sprite paloSprite;
     public Sprite saviaSprite;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
         if (spriteRenderer == null)
         {
             Debug.LogError("SpriteRenderer is missing on the GameObject.");

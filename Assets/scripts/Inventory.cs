@@ -14,8 +14,9 @@ public class Inventory : MonoBehaviour
     {
         // Shitty ass method iterates over all items
         // Could not get the collisions to behave properly :/
-
-        Item[] items = FindObjectsOfType<Item>();
+        
+        Item[] items = ItemList.current.GetItems();
+        Debug.Log(items.Length);
 
         foreach (var item in items)
         {
@@ -24,6 +25,7 @@ public class Inventory : MonoBehaviour
             if (distance <= pickUpRadius)
             {
                 item.PickUp();
+                InventoryManager.current.AddItem(item.itemType, 1);
                 Debug.Log($"Item {item.itemType} is within range at a distance of {distance} meters.");
             }
         }
