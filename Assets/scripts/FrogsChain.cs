@@ -1,22 +1,26 @@
-using UnityEngine;
+/*sing UnityEngine;
 
 public class FrogsChain : MonoBehaviour
 {
-    [SerializeField] private GameObject target; // Objetivo de esta ranita
-    [SerializeField] private float followSpeed = 3f; // Velocidad de movimiento
-    [SerializeField] private float followDistance = 1.5f; // Distancia mÌnima con el objetivo
-
+    [SerializeField] private GameObject animeGirl; // Referencia al objeto Anime Girl
+    [SerializeField] private GameObject target; // Objetivo que esta rana debe seguir
+    [SerializeField] private float followSpeed = 2.5f; // Velocidad de movimiento
+    [SerializeField] private float followDistance = 1.5f; // Distancia m√≠nima con el objetivo
     private Rigidbody2D rb; // Referencia al Rigidbody2D
+    private bool isDropped = false; // Indica si la rana ha sido dropeada
 
     void Start()
     {
-        // Obtener el Rigidbody2D
         rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
-        FollowTarget();
+        // Solo sigue al objetivo si no ha sido dropeada
+        if (!isDropped)
+        {
+            FollowTarget();
+        }
     }
 
     void FollowTarget()
@@ -26,21 +30,47 @@ public class FrogsChain : MonoBehaviour
         // Calcular la distancia al objetivo
         float distance = Vector2.Distance(transform.position, target.transform.position);
 
-        // Si la distancia es mayor que la mÌnima, moverse hacia el objetivo
         if (distance > followDistance)
         {
+            // Calcular la direcci√≥n hacia el objetivo
             Vector2 direction = ((Vector2)target.transform.position - rb.position).normalized;
-            Vector2 targetPosition = (Vector2)target.transform.position - direction * followDistance;
 
-            // Movimiento suave usando interpolaciÛn
-            rb.MovePosition(Vector2.Lerp(rb.position, targetPosition, followSpeed * Time.fixedDeltaTime));
+            // Aplicar movimiento al Rigidbody2D
+            rb.linearVelocity = direction * followSpeed;
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero; // Detener el movimiento si est√° dentro de la distancia m√≠nima
         }
     }
 
-    public void SetTarget(GameObject newTarget)
+    public void DropFrog()
+    {
+        // La rana se detiene y deja de seguir al objetivo
+        isDropped = true;
+        rb.linearVelocity = Vector2.zero; // Detener cualquier movimiento
+        rb.bodyType = RigidbodyType2D.Static; // Cambiar a est√°tico para que no interfiera
+    }
+
+    public void ReassignFollowers()
+    {
+        // Encuentra todas las ranas y reasigna su objetivo a la Anime Girl
+        FrogsChain[] allFrogs = FindObjectsOfType<FrogsChain>();
+
+        foreach (FrogsChain frog in allFrogs)
+        {
+            if (frog.target == this.gameObject)
+            {
+                frog.SetNewTarget(animeGirl); // Asignar el objetivo a Anime Girl
+            }
+        }
+    }
+
+    public void SetNewTarget(GameObject newTarget)
     {
         target = newTarget;
+        isDropped = false; // Reactivar el seguimiento
+        rb.bodyType = RigidbodyType2D.Dynamic; // Volver a Dynamic para moverse
     }
 }
-
-
+*/

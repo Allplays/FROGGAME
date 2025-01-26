@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 8129d472c6212d44ab47066401ae95e1
+guid: df24ff9da1339a14290614912e0518fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7819331073401474159
-    second: building_shrine_0
+      213: -5783242543835984722
+    second: lennon_idle_0
+  - first:
+      213: -5483136038419379776
+    second: lennon_idle_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1000
+  spritePixelsToUnits: 3000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,30 +99,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: building_shrine_0
+      name: lennon_idle_0
       rect:
         serializedVersion: 2
-        x: 157
-        y: 205
-        width: 1710
-        height: 1456
+        x: 329
+        y: 279
+        width: 1301
+        height: 1311
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1933bbc31d72c7390800000000000000
-      internalID: -7819331073401474159
+      spriteID: eaccabc1c8bcdbfa0800000000000000
+      internalID: -5783242543835984722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lennon_idle_1
+      rect:
+        serializedVersion: 2
+        x: 1724
+        y: 463
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c9cedee2dcf7e3b0800000000000000
+      internalID: -5483136038419379776
       vertices: []
       indices: 
       edges: []
@@ -148,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      building_shrine_0: -7819331073401474159
+      lennon_idle_0: -5783242543835984722
+      lennon_idle_1: -5483136038419379776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

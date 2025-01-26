@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class AnimeGIrl : MonoBehaviour
 {
-      [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento
+    [SerializeField] private float moveSpeed = 5f; // Velocidad de movimiento
 
 
     void Update()
     {
         Vector3 pos = transform.position;
+        //animator.SetFloat("Speed", Mathf.Abs(pos));
+
 
         if (Input.GetKey("w"))
         {
             pos.y += moveSpeed * Time.deltaTime;
+            //animator.SetFloat("Speed", Mathf.Abs(pos.y));
         }
         if (Input.GetKey("s"))
         {
             pos.y -= moveSpeed * Time.deltaTime;
+            //animator.SetFloat("Speed", Mathf.Abs(pos.y));
 
         }
         if (Input.GetKey("a"))

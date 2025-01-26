@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8129d472c6212d44ab47066401ae95e1
+guid: 5726d681f4246fd4db2579b64787a4b4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7819331073401474159
-    second: building_shrine_0
+      213: 6892382822572527974
+    second: back_anim_1 (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: building_shrine_0
+      name: back_anim_1 (1)_0
       rect:
         serializedVersion: 2
-        x: 157
-        y: 205
-        width: 1710
-        height: 1456
+        x: 296
+        y: 32
+        width: 1403
+        height: 1900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1933bbc31d72c7390800000000000000
-      internalID: -7819331073401474159
+      spriteID: 6619073e8a9a6af50800000000000000
+      internalID: 6892382822572527974
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      building_shrine_0: -7819331073401474159
+      back_anim_1 (1)_0: 6892382822572527974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
