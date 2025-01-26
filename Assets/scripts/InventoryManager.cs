@@ -1,15 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager: MonoBehaviour
+public class InventoryManager
 {
     private Dictionary<Item.ItemType, int> itemCounts = new Dictionary<Item.ItemType, int>();
-    public static InventoryManager current;
 
-    private void Awake()
-    {
-        current = this;
-    }
     public bool AddItem(Item.ItemType itemType, int quantity)
     {
         if (quantity <= 0)

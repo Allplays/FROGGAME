@@ -23,7 +23,7 @@ public class Frogs : MonoBehaviour
 
     void Update()
     {
-        // Animación de "isDragged"
+        
         frogAnimator.SetBool("isDragged", isBeingDragged);
 
         if (isDropped && isNearRot)
@@ -40,8 +40,8 @@ public class Frogs : MonoBehaviour
 
                 if (currentRot != null)
                 {
-                    Destroy(currentRot); // Destruir el objeto "Rot" que está cerca
-                    currentRot = null; // Reiniciar la referencia
+                    Destroy(currentRot); 
+                    currentRot = null; 
                     isNearRot = false;
                 }
             }
@@ -53,7 +53,7 @@ public class Frogs : MonoBehaviour
             isDropped = false;
         }
 
-        // Movimiento automático hacia "animeGirl"
+        
         distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
         if (distanceBetween >= 3 && !isBeingDragged && !isDropped)
         {
@@ -78,16 +78,16 @@ public class Frogs : MonoBehaviour
         if (isBeingDragged)
         {
             isBeingDragged = false;
-            isDropped = true; // Marca que se soltó
+            isDropped = true; 
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Rot")) // Verifica si el objeto tiene el tag "Rot"
+        if (collision.CompareTag("Rot")) 
         {
             isNearRot = true;
-            currentRot = collision.gameObject; // Guarda el objeto "Rot" con el que está colisionando
+            currentRot = collision.gameObject; 
         }
     }
 
@@ -96,7 +96,7 @@ public class Frogs : MonoBehaviour
         if (collision.CompareTag("Rot"))
         {
             isNearRot = false;
-            currentRot = null; // Limpia la referencia del objeto "Rot"
+            currentRot = null; 
         }
     }
 

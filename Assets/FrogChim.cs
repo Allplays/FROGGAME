@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Runtime.CompilerServices;
-using UnityEngine; 
+using UnityEngine;
 
 public class FrogChim : MonoBehaviour
 {
-    [SerializeField] private GameObject animeGirl; // Referencia al objeto Anime Girl
-                                                   // [SerializeField] private GameObject poopPrefab; // Prefab de la "caca"
-    [SerializeField] private float speed = 2f; // Distancia a la que la rana debe estar para volver a unirse
-    private float distanceBetween;  // Distancia a la que la rana debe estar para volver a unirse
+    [SerializeField] private GameObject animeGirl;
+    [SerializeField] private GameObject[] itemPrefabs; 
+    [SerializeField] private float speed = 2f;
+
+    private float distanceBetween;
     private bool isBeingDragged = false;
     private bool isDropped = false;
     private bool working = false;
@@ -16,26 +15,23 @@ public class FrogChim : MonoBehaviour
 
     Vector3 offset;
 
-    // private bool isBeingDragged = false; // Si la rana está siendo arrastrada
-     // Offset para arrastrar correctamente
-    // private bool d = false; // Controla si la rana debería regresar a la cadena
-
     void Update()
     {
         distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
-        if (distanceBetween >= 5 & !working)
+        if (distanceBetween >= 5 && !working)
         {
             transform.position = Vector2.MoveTowards(transform.position, animeGirl.transform.position, speed * Time.deltaTime);
         }
-        if (counter > 5000 & working)
+        if (counter > 100 && working)
         {
-            doneWorking();
+            DoneWorking();
         }
-        else if(working)
+        else if (working)
         {
             counter++;
         }
     }
+
     void OnMouseDown()
     {
         if (!isDropped)
@@ -55,7 +51,7 @@ public class FrogChim : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (isBeingDragged) // Al soltar el botón del ratón
+        if (isBeingDragged)
         {
             isBeingDragged = false;
             isDropped = true;
@@ -65,10 +61,17 @@ public class FrogChim : MonoBehaviour
         }
     }
 
-    void doneWorking()
+    void DoneWorking()
     {
-        simpleInventory.current.holding[checkTask()]++;
-        Debug.Log("Item recogido");
+        Vector3 spawnPosition = transform.position + Vector3.down * 0.5f;
+
+        int randomIndex = Random.Range(0, itemPrefabs.Length); 
+        if (itemPrefabs[randomIndex] != null)
+        {
+            Instantiate(itemPrefabs[randomIndex], spawnPosition, Quaternion.identity);
+            Debug.Log($"Item instanciado: {itemPrefabs[randomIndex].name}");
+        }
+
         working = false;
         isDropped = false;
     }
@@ -79,21 +82,4 @@ public class FrogChim : MonoBehaviour
         mousePoint.z = Camera.main.WorldToScreenPoint(transform.position).z;
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
-    int checkTask()
-        {
-            if (this.gameObject.transform.position.x < 0 & this.gameObject.transform.position.y < 0)
-            {
-                return 0;
-            }
-            else if(this.gameObject.transform.position.x < 0 & this.gameObject.transform.position.y >= 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return 2;
-            }
-
-        }
-
 }
