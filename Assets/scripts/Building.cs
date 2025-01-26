@@ -16,6 +16,7 @@ public class Building : MonoBehaviour
     public static Building current;
 
     [SerializeField] AudioSource buildSuccessSfx;
+    [SerializeField] AudioSource buildFailSfx;
     void Start()
     {
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
@@ -38,6 +39,7 @@ public class Building : MonoBehaviour
         if (GridBuildingSystem.current.CanTakeArea(areaTemp))
         {
             Place();
+            buildSuccessSfx.Play();
             return ;
         }
         return ;
@@ -89,6 +91,7 @@ public class Building : MonoBehaviour
 
     public void Disappear()
     {
+        
         Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
@@ -99,5 +102,6 @@ public class Building : MonoBehaviour
         Destroy(disappearButton.gameObject);
         Destroy(sprite);
         Destroy(current);
+        buildFailSfx.Play();
     }
 }

@@ -32,6 +32,13 @@ public class AnimeGirl : MonoBehaviour
             pos.x += moveSpeed * Time.deltaTime;
             isMovingRight = true; // Activar el flag de movimiento hacia la derecha
         }
+        
+        if (Input.GetKeyDown("w")) animeGirlStepSfx.Play();
+        else if (Input.GetKeyDown("s")) animeGirlStepSfx.Play();
+        else if (Input.GetKeyDown("a")) animeGirlStepSfx.Play();
+        else if (Input.GetKeyDown("d")) animeGirlStepSfx.Play();
+        
+        if (!isMovingDown && !isMovingLeft && !isMovingRight && !isMovingUp) animeGirlStepSfx.Stop();
 
         // Actualizar la posición del personaje
         transform.position = pos;
@@ -44,7 +51,5 @@ public class AnimeGirl : MonoBehaviour
         animator.SetBool("isMovingDown", isMovingDown);  // Activar animación de moverse hacia abajo
         animator.SetBool("isMovingLeft", isMovingLeft);  // Activar animación de moverse hacia la izquierda
         animator.SetBool("isMovingRight", isMovingRight);  // Activar animación de moverse hacia la derecha
-
-        while (moveSpeed > 0) {animeGirlStepSfx.Play(); }
     }
 }
