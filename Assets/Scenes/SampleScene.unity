@@ -1970,6 +1970,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &704413284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6840841717103828434, guid: 8ef69a404f587344a912a2fc443943c7, type: 3}
+  m_PrefabInstance: {fileID: 1489979951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &795413097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,6 +2122,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 239879381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &866294587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6840841717103828434, guid: 8ef69a404f587344a912a2fc443943c7, type: 3}
+  m_PrefabInstance: {fileID: 322645591}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1153437270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6840841717103828434, guid: 8ef69a404f587344a912a2fc443943c7, type: 3}
+  m_PrefabInstance: {fileID: 1996546212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1194742348
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2286,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245626376}
   m_CullTransparentMesh: 1
+--- !u!1 &1360739725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6840841717103828434, guid: 8ef69a404f587344a912a2fc443943c7, type: 3}
+  m_PrefabInstance: {fileID: 203883463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1395187922
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,6 +2780,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513654096}
   m_CullTransparentMesh: 1
+--- !u!1 &1513847505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6840841717103828434, guid: 8ef69a404f587344a912a2fc443943c7, type: 3}
+  m_PrefabInstance: {fileID: 1496242643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1551294519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6840841717103828434, guid: 8ef69a404f587344a912a2fc443943c7, type: 3}
@@ -2931,11 +2956,11 @@ MonoBehaviour:
   TempTilemap: {fileID: 795413097}
   Buttons:
   - {fileID: 1551294519}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1153437270}
+  - {fileID: 704413284}
+  - {fileID: 1360739725}
+  - {fileID: 866294587}
+  - {fileID: 1513847505}
   background: {fileID: 1245626376}
   marco: {fileID: 517530961}
   sprite: {fileID: 593074591}
