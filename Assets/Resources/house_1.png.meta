@@ -120,8 +120,8 @@ TextureImporter:
         y: 152
         width: 1646
         height: 1598
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.47832447, y: 0.2703551}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3e6dc3d308988304ab682a025aede924
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      house_1_0: -4098823163760067679
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

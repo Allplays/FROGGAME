@@ -26,8 +26,10 @@ public class UI : MonoBehaviour
     [SerializeField] public GameObject sprite;
     private Image titleRenderer;
 
-    Dictionary<string, Dictionary<string, int[]>> MenuRecipes = new Dictionary<string, Dictionary<string, int[]>>();
+    public Dictionary<string, Dictionary<string, int[]>> MenuRecipes = new Dictionary<string, Dictionary<string, int[]>>();
     Dictionary<string, int[]> unlockableRecipes = new Dictionary<string, int[]>();
+
+    int pipipopo;
 
     private void Awake()
     {
@@ -49,7 +51,7 @@ public class UI : MonoBehaviour
 
         MenuRecipes["townhall"] = new Dictionary<string, int[]>
         {
-            { "turret_A", new int[] { 0, 0, 0, 3 } },
+            { "turret", new int[] { 1, 0, 0, 3 } },
             { "house_1", new int[] { 0, 2, 2, 0} }
         };
 
@@ -66,7 +68,7 @@ public class UI : MonoBehaviour
             { "townhall", new int[] { 3, 0, 2, 0 } },
         };
 
-        unlockableRecipes["turret_A"] = new int[] { 5, 3, 0, 0 };
+        unlockableRecipes["turret"] = new int[] { 5, 3, 0, 0 };
         unlockableRecipes["house_1"] = new int[] { 0, 5, 5, 0 };
     }
 
@@ -93,6 +95,7 @@ public class UI : MonoBehaviour
 
     public void OpenMenu(string title)
     {
+        //Debug.Log("Pasamos a" + title);
         menuUp = title;
         titleRenderer.sprite = Resources.Load<Sprite>($"titulo_" + title);
         background.SetActive(true);
@@ -105,6 +108,7 @@ public class UI : MonoBehaviour
     public void CloseMenu()
     {
         menuUp = "noMenu";
+        //Debug.Log("Pasamos a noMenu");
         background.SetActive(false);
         marco.SetActive(false);
         sprite.SetActive(false);
@@ -148,12 +152,13 @@ public class UI : MonoBehaviour
             case "building":
                 //Debug.Log("Estoy en building, todo correcto");
                 CloseMenu();
+                //Debug.Log("Pasamos a grid");
                 menuUp = "grid";
                 Grid.SetActive(true);
                 MainTilemap.SetActive(true);
                 TempTilemap.SetActive(true);
                 string[] buildingKeys = MenuRecipes["building"].Keys.ToArray();
-                Debug.Log(Resources.Load<GameObject>(buildingKeys[numero - 1]));
+                //Debug.Log(buildingKeys[numero - 1]);
                 buildingPrefab = Resources.Load<GameObject>(buildingKeys[numero - 1]);
                 GridBuildingSystem.current.InitializeWithBuilding(buildingPrefab);
                 break;
@@ -179,6 +184,7 @@ public class UI : MonoBehaviour
             {
                 string[] keys = MenuRecipes[menuUp].Keys.ToArray();
                 int[] positions = new int[2];
+                pipipopo = 0;
                 for (int j = 0; j < MenuRecipes[menuUp][keys[i]].Length; j++)
                 //foreach (var e in MenuRecipes[menuUp][keys[i-1]])
                 {
@@ -188,11 +194,11 @@ public class UI : MonoBehaviour
                     //Debug.Log(keys[i]);
                     //Debug.Log(j);
                     //Debug.Log(MenuRecipes[menuUp][keys[i]][j]);
-                    int pipipopo = 0;
                     if (MenuRecipes[menuUp][keys[i]][j] != 0)
                     {
-                        Debug.Log("mamaguevo");
-                        Debug.Log(j);
+                        //Debug.Log("mamaguevo");
+                        //Debug.Log(j);
+                        //Debug.Log(pipipopo);
                         positions[pipipopo] = j;
                         pipipopo++;
                     }
