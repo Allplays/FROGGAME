@@ -58,6 +58,7 @@ public class enemy : MonoBehaviour
         if (dead)
         {
             deathTimer += Time.deltaTime;
+            this.GetComponent<Transform>().position = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y+0.001f, this.GetComponent<Transform>().position.z);
             if (deathTimer > 1)
             {
                 Destroy(spriteRenderer);
