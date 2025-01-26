@@ -118,7 +118,7 @@ public class UI : MonoBehaviour
 
     public void CheckCraft(int numero)
     {
-        /*
+        
         //Debug.Log(numero);
         string[] keys = MenuRecipes[menuUp].Keys.ToArray();
         if (numero > keys.Length)
@@ -128,19 +128,19 @@ public class UI : MonoBehaviour
         }
         for (int i = 0; i < MenuRecipes[menuUp][keys[numero-1]].Length; i++)
         {
-            if (Inventory.current.holding[i] < MenuRecipes[menuUp][keys[numero - 1]][i])
-            {
+            //if (Inventory.current.holding[i] < MenuRecipes[menuUp][keys[numero - 1]][i])
+            //{
                 //Debug.Log($"Te faltan materiales");
                 //Debug.Log(i);
                 //Debug.Log(Inventory.current.holding[i]);
                 //Debug.Log(MenuRecipes[menuUp][keys[numero - 1]][i]);
-                return;
-            }
+            //   return;
+            //}
         }
 
         for (int i = 0; i < MenuRecipes[menuUp][keys[numero-1]].Length; i++)
         {
-            Inventory.current.holding[i] -= MenuRecipes[menuUp][keys[numero-1]][i];
+            //Inventory.current.holding[i] -= MenuRecipes[menuUp][keys[numero-1]][i];
         }
         //Debug.Log(menuUp);
         switch (menuUp)
@@ -166,7 +166,7 @@ public class UI : MonoBehaviour
                 break;
 
         }
-        */
+        
 
     }
 
