@@ -116,6 +116,7 @@ public class UI : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.B) & menuUp == "noMenu")
         {
             OpenMenu($"building");
+            openMenuSfx.Play();
         }
         enemyCounter += Time.deltaTime;
         if (enemyCounter > 10)
