@@ -6,6 +6,9 @@ public class Building : MonoBehaviour
     public bool Placed = false;
     public bool mouseHovering;
     public BoundsInt area;
+    public Canvas canvas; 
+    public Button placeButton;
+    public Button disappearButton;
     public Color hoveringColor;
     private Color originalColor;
     [SerializeField] public GameObject sprite;
@@ -46,6 +49,9 @@ public class Building : MonoBehaviour
         areaTemp.position = positionInt;
         Placed = true;
         GridBuildingSystem.current.TakeArea(areaTemp);
+        UI.current.CloseMenu();
+        Destroy(placeButton.gameObject);
+        Destroy(disappearButton.gameObject);
     }
 
     #endregion
@@ -85,11 +91,11 @@ public class Building : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
         GridBuildingSystem.current.UntakeArea(areaTemp);
+        canvas.gameObject.SetActive(false);
         UI.current.CloseMenu();
-        //canvas.ac
-        //placeButton.gameObject
-        //disappearButton.gameObject
-        //sprite
-        //current
+        Destroy(placeButton.gameObject);
+        Destroy(disappearButton.gameObject);
+        Destroy(sprite);
+        Destroy(current);
     }
 }

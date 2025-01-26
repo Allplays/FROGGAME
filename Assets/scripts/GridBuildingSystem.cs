@@ -114,10 +114,6 @@ public class GridBuildingSystem : MonoBehaviour
     public void InitializeWithBuilding(GameObject building)
     {
         temp = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
-        UI.current.buildButton.onClick.AddListener(Building.current.CanBePlaced);
-        UI.current.unbuildButton.onClick.AddListener(Building.current.Disappear);
-        UI.current.unbuildButton.gameObject.SetActive(true);
-        UI.current.buildButton.gameObject.SetActive(true);
         FollowBuilding();
     }
 
@@ -189,20 +185,12 @@ public class GridBuildingSystem : MonoBehaviour
         //Debug.Log($"Entro en la funcion");
         SetTilesBlock(area, TileType.Empty, TempTilemap);
         SetTilesBlock(area, TileType.Green, MainTilemap);
-        UI.current.buildButton.onClick.RemoveListener(Building.current.CanBePlaced);
-        UI.current.unbuildButton.onClick.RemoveListener(Building.current.Disappear);
-        UI.current.unbuildButton.gameObject.SetActive(false);
-        UI.current.buildButton.gameObject.SetActive(false);
         temp = null;
     }
 
     public void UntakeArea(BoundsInt area)
     {
         SetTilesBlock(area, TileType.Empty, TempTilemap);
-        UI.current.buildButton.onClick.RemoveListener(Building.current.CanBePlaced);
-        UI.current.unbuildButton.onClick.RemoveListener(Building.current.Disappear);
-        UI.current.unbuildButton.gameObject.SetActive(false);
-        UI.current.buildButton.gameObject.SetActive(false);
         temp = null;
     }
 

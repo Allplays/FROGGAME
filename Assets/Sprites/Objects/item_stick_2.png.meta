@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8129d472c6212d44ab47066401ae95e1
+guid: 558de8c72e847e1499481e01b5af716a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7819331073401474159
-    second: building_shrine_0
+      213: -1672244772476208686
+    second: item_stick_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: building_shrine_0
+      name: item_stick_2_0
       rect:
         serializedVersion: 2
-        x: 157
-        y: 205
-        width: 1710
-        height: 1456
+        x: 506
+        y: 274
+        width: 988
+        height: 1443
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1933bbc31d72c7390800000000000000
-      internalID: -7819331073401474159
+      spriteID: 2d93d074d3efac8e0800000000000000
+      internalID: -1672244772476208686
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      building_shrine_0: -7819331073401474159
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

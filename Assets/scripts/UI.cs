@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -16,9 +17,6 @@ public class UI : MonoBehaviour
     public GameObject Grid;
     public GameObject MainTilemap;
     public GameObject TempTilemap;
-
-    public Button buildButton;
-    public Button unbuildButton;
 
     public GameObject[] Buttons;
 
@@ -45,25 +43,22 @@ public class UI : MonoBehaviour
 
         ButtonsSwitch(false);
 
-        buildButton.gameObject.SetActive(false);
-        unbuildButton.gameObject.SetActive(false);
-
         Grid.SetActive(false);
         MainTilemap.SetActive(false);
         TempTilemap.SetActive(false);
 
         MenuRecipes["townhall"] = new Dictionary<string, int[]>
         {
-            { "defense_tower", new int[] { 0, 0, 0, 3 } },
-            { "house", new int[] { 0, 2, 2, 0} }
+            { "turret_A", new int[] { 0, 0, 0, 3 } },
+            { "house_1", new int[] { 0, 2, 2, 0} }
         };
 
         MenuRecipes["shrine"] = new Dictionary<string, int[]>
         {
-            { "chimi", new int[] { 0, 0, 2, 0 } },
-            { "lula", new int[] { 3, 0, 0, 0 } },
-            { "poppy", new int[] { 0, 3, 0, 0 } },
-            { "lennon", new int[] { 1, 0, 1, 0 } }
+            { "chimi_collect_2", new int[] { 0, 0, 2, 1 } },
+            //{ "lula", new int[] { 3, 0, 0, 0 } },
+            { "poppy_idle_1", new int[] { 0, 3, 0, 1 } },
+            { "lennon_munch_1", new int[] { 1, 0, 1, 0 } }
         };
 
         MenuRecipes["building"] = new Dictionary<string, int[]>
@@ -71,8 +66,8 @@ public class UI : MonoBehaviour
             { "townhall", new int[] { 3, 0, 2, 0 } },
         };
 
-        unlockableRecipes["tower_defense"] = new int[] { 5, 3, 0, 0 };
-        unlockableRecipes["house"] = new int[] { 0, 5, 5, 0 };
+        unlockableRecipes["turret_A"] = new int[] { 5, 3, 0, 0 };
+        unlockableRecipes["house_1"] = new int[] { 0, 5, 5, 0 };
     }
 
     // Update is called once per frame
@@ -85,6 +80,10 @@ public class UI : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape) & menuUp != "noMenu")
         {
             CloseMenu();
+            if (Building.current.Placed == false)
+            {
+                Building.current.Disappear();
+            }
         }
         else if (Input.GetKeyUp(KeyCode.B) & menuUp == "noMenu")
         {
@@ -100,7 +99,7 @@ public class UI : MonoBehaviour
         marco.SetActive(true);
         sprite.SetActive(true);
 
-        ButtonsSwitch(true, MenuRecipes[menuUp].Keys.ToArray().Length);
+        ButtonsSwitch(true, MenuRecipes[menuUp].Keys.ToArray().Length, true);
     }
 
     public void CloseMenu()
@@ -153,6 +152,7 @@ public class UI : MonoBehaviour
                 MainTilemap.SetActive(true);
                 TempTilemap.SetActive(true);
                 string[] buildingKeys = MenuRecipes["building"].Keys.ToArray();
+                Debug.Log(buildingKeys[numero - 1]);
                 buildingPrefab = Resources.Load<GameObject>(buildingKeys[numero - 1]);
                 GridBuildingSystem.current.InitializeWithBuilding(buildingPrefab);
                 break;
@@ -168,11 +168,42 @@ public class UI : MonoBehaviour
 
     }
 
-    private void ButtonsSwitch(bool mode, int numero = 6)
+    private void ButtonsSwitch(bool mode, int numero = 6, bool image = false)
     {
         for (int i = 0; i < numero; i++)
         {
             Buttons[i].SetActive(mode);
+            if (image)
+            {
+                string[] keys = MenuRecipes[menuUp].Keys.ToArray();
+                int[] positions = new int[2];
+                for (int j = 0; j < MenuRecipes[menuUp][keys[i]].Length; j++)
+                //foreach (var e in MenuRecipes[menuUp][keys[i-1]])
+                {
+                    //Debug.Log(i);
+                    //Debug.Log(j);
+                    //Debug.Log(keys.Length);
+                    //Debug.Log(keys[i]);
+                    //Debug.Log(j);
+                    //Debug.Log(MenuRecipes[menuUp][keys[i]][j]);
+                    int pipipopo = 0;
+                    if (MenuRecipes[menuUp][keys[i]][j] != 0)
+                    {
+                        Debug.Log("mamaguevo");
+                        Debug.Log(j);
+                        positions[pipipopo] = j;
+                        pipipopo++;
+                    }
+                }
+                //Debug.Log(positions[0].ToString());
+                //Debug.Log(positions[1].ToString());
+                //Debug.Log(keys[i]);
+                Buttons[i].transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(positions[1].ToString());
+                Buttons[i].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(positions[0].ToString());
+                Buttons[i].transform.GetChild(3).GetComponent<Image>().sprite = Resources.Load<Sprite>("num" + MenuRecipes[menuUp][keys[i]][positions[0]].ToString());
+                Buttons[i].transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("num" + MenuRecipes[menuUp][keys[i]][positions[1]].ToString());
+                Buttons[i].transform.GetChild(4).GetComponent<Image>().sprite = Resources.Load<Sprite>(keys[i]);
+            }
         }
     }
 }

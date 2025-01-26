@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 0be92752509fa8a4198283260ef4baaf
+guid: f94840fdc017af047b8245ec33f4960e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8601992127798914255
-    second: building_house_2_0
+      213: 601719333105437743
+    second: house_2_0
   - first:
-      213: 8258576920195894836
-    second: building_house_2_1
+      213: 7793307779397939613
+    second: house_2_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: building_house_2_0
+      name: house_2_0
       rect:
         serializedVersion: 2
         x: 405
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcc2922d34a606770800000000000000
-      internalID: 8601992127798914255
+      spriteID: f2c0c30ab8cb95800800000000000000
+      internalID: 601719333105437743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: building_house_2_1
+      name: house_2_1
       rect:
         serializedVersion: 2
         x: 501
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43e048ef3fb5c9270800000000000000
-      internalID: 8258576920195894836
+      spriteID: d917d487224672c60800000000000000
+      internalID: 7793307779397939613
       vertices: []
       indices: 
       edges: []
@@ -172,9 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      building_house_2_0: 8601992127798914255
-      building_house_2_1: 8258576920195894836
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
