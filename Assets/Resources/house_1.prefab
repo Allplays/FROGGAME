@@ -57,6 +57,8 @@ MonoBehaviour:
   disappearButton: {fileID: 7018810830975407494}
   hoveringColor: {r: 1, g: 0.9770569, b: 1, a: 0.7529412}
   sprite: {fileID: 8978745175923599468}
+  buildSuccessSfx: {fileID: 0}
+  buildFailSfx: {fileID: 0}
 --- !u!61 &6810320011306571835
 BoxCollider2D:
   m_ObjectHideFlags: 0

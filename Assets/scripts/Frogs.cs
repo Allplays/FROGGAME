@@ -92,15 +92,12 @@ public class Frogs : MonoBehaviour
         if (isBeingDragged)
         {
             isBeingDragged = false;
-<<<<<<< HEAD
             isDropped = true; 
-=======
-            isDropped = true; // Marca que se soltó
-            idleSfx.Play();
->>>>>>> 253bbb01d43da9998fa17119d91023aac2a3ba0e
+            //idleSfx.Play();
+
         }
-        if (isNearRot)
-        { munchSfx.Play(); idleSfx.Stop(); }
+        //if (isNearRot)
+        //{ munchSfx.Play(); idleSfx.Stop(); }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -108,12 +105,9 @@ public class Frogs : MonoBehaviour
         if (collision.CompareTag("Rot")) 
         {
             isNearRot = true;
-<<<<<<< HEAD
             currentRot = collision.gameObject; 
-=======
-            currentRot = collision.gameObject; // Guarda el objeto "Rot" con el que está colisionando
-            
->>>>>>> 253bbb01d43da9998fa17119d91023aac2a3ba0e
+            //currentRot = collision.gameObject; // Guarda el objeto "Rot" con el que está colisionando
+      
         }
     }
 
@@ -122,13 +116,9 @@ public class Frogs : MonoBehaviour
         if (collision.CompareTag("Rot"))
         {
             isNearRot = false;
-<<<<<<< HEAD
             currentRot = null; 
-=======
-            currentRot = null; // Limpia la referencia del objeto "Rot"
-            munchSfx.Stop();
-            idleSfx.Play();
->>>>>>> 253bbb01d43da9998fa17119d91023aac2a3ba0e
+            //munchSfx.Stop();
+            //idleSfx.Play();
         }
     }
 

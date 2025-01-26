@@ -31,7 +31,10 @@ public class FrogChim : MonoBehaviour
             counter++;
         }
     }
-
+    private void Start()
+    {
+        animeGirl = AnimeGirl.current.gameObject;
+    }
     void OnMouseDown()
     {
         if (!isDropped)
