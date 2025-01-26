@@ -185,6 +185,12 @@ public class GridBuildingSystem : MonoBehaviour
         //Debug.Log($"Entro en la funcion");
         SetTilesBlock(area, TileType.Empty, TempTilemap);
         SetTilesBlock(area, TileType.Green, MainTilemap);
+        //Debug.Log(Building.current.name);
+        //Debug.Log(Building.current.name == "townhall(Clone)");
+        if (Building.current.name == "townhall(Clone)")
+        {
+            UI.current.MenuRecipes["building"].Remove("townhall");
+        }
         temp = null;
     }
 
