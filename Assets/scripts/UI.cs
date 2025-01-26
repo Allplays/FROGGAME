@@ -75,7 +75,7 @@ public class UI : MonoBehaviour
 
         MenuRecipes["shrine"] = new Dictionary<string, int[]>
         {
-            { "chimi_collect_2", new int[] { 0, 0, 2, 1 } },
+            { "chimi_idle_1", new int[] { 0, 0, 2, 1 } },
             //{ "lula", new int[] { 3, 0, 0, 0 } },
             { "poppy_idle_1", new int[] { 0, 3, 0, 1 } },
             { "lennon_munch_1", new int[] { 1, 0, 1, 0 } }
@@ -219,8 +219,10 @@ public class UI : MonoBehaviour
                 CloseMenu();
                 break;
             case "shrine":
+                
                 string[] frogKeys = MenuRecipes["shrine"].Keys.ToArray();
                 frogPrefab = Resources.Load<GameObject>(frogKeys[numero - 1]);
+                Debug.Log(frogKeys[numero - 1]);
                 Instantiate(frogPrefab, Vector3.zero, Quaternion.identity);
                 CloseMenu();
                 break;
