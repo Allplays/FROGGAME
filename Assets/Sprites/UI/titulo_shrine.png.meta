@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d31692f1c9c4ff840918f7dc333aec68
+guid: e27802e3215eedf4b9a7ffa4f7ec55be
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3332620318869700129
-    second: object_clean_energy_0
+      213: -3726056762707113454
+    second: titulo_shrine_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: object_clean_energy_0
+      name: titulo_shrine_0
       rect:
         serializedVersion: 2
-        x: 385
-        y: 342
-        width: 1207
-        height: 1351
+        x: 0
+        y: 0
+        width: 2301
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd1c58a1a7720c1d0800000000000000
-      internalID: -3332620318869700129
+      spriteID: 21a86e5ad136a4cc0800000000000000
+      internalID: -3726056762707113454
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      object_clean_energy_0: -3332620318869700129
+      titulo_shrine_0: -3726056762707113454
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

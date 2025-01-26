@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d31692f1c9c4ff840918f7dc333aec68
+guid: 0ffc044dbb873e74e897ce652400981c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3332620318869700129
-    second: object_clean_energy_0
+      213: -5700237734548782578
+    second: chimi_collect_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 3000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: object_clean_energy_0
+      name: chimi_collect_2_0
       rect:
         serializedVersion: 2
-        x: 385
-        y: 342
-        width: 1207
-        height: 1351
+        x: 429
+        y: 416
+        width: 1249
+        height: 1169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd1c58a1a7720c1d0800000000000000
-      internalID: -3332620318869700129
+      spriteID: e0241f84bffa4e0b0800000000000000
+      internalID: -5700237734548782578
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      object_clean_energy_0: -3332620318869700129
+      chimi_collect_2_0: -5700237734548782578
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

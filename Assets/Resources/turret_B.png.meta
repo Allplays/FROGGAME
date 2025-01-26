@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d31692f1c9c4ff840918f7dc333aec68
+guid: 4ef22348af93bd64d82015e8babcc42c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3332620318869700129
-    second: object_clean_energy_0
+      213: 359659014000066089
+    second: turret_B_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: object_clean_energy_0
+      name: turret_B_0
       rect:
         serializedVersion: 2
-        x: 385
-        y: 342
-        width: 1207
-        height: 1351
+        x: 394
+        y: 165
+        width: 1288
+        height: 1597
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd1c58a1a7720c1d0800000000000000
-      internalID: -3332620318869700129
+      spriteID: 92ebdb9b7f3cdf400800000000000000
+      internalID: 359659014000066089
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      object_clean_energy_0: -3332620318869700129
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

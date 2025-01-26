@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d31692f1c9c4ff840918f7dc333aec68
+guid: 29b0b739c97b08c419c0bd4c85ba7a12
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3332620318869700129
-    second: object_clean_energy_0
+      213: -4288078194227591012
+    second: poppy_idle_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 3000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: object_clean_energy_0
+      name: poppy_idle_1_0
       rect:
         serializedVersion: 2
-        x: 385
-        y: 342
-        width: 1207
-        height: 1351
+        x: 353
+        y: 302
+        width: 1345
+        height: 1305
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd1c58a1a7720c1d0800000000000000
-      internalID: -3332620318869700129
+      spriteID: c9847fff99fad74c0800000000000000
+      internalID: -4288078194227591012
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      object_clean_energy_0: -3332620318869700129
+      poppy_idle_1_0: -4288078194227591012
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
