@@ -12,7 +12,7 @@ public class shrine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Building>().getMouseHovering())
+        if (Input.GetMouseButtonDown(0) & this.gameObject.GetComponent<Building>().getMouseHovering() & UI.current.menuUp == "noMenu")
         {
             Debug.Log($"Has clickado el shrine");
             UI.current.OpenMenu($"shrine");

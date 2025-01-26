@@ -5,15 +5,19 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class UI : MonoBehaviour
 {
     public static UI current;
 
-    private string menuUp = "noMenu";
+    public string menuUp = "noMenu";
 
     public GameObject buildingPrefab;
     public GameObject frogPrefab;
+
+    public GameObject panel;
+    public GameObject panelBackground;
 
     public GameObject Grid;
     public GameObject MainTilemap;
@@ -21,11 +25,14 @@ public class UI : MonoBehaviour
 
     public GameObject[] Buttons;
 
+    public GameObject ContinueButton;
+    public GameObject ExitButton;
+
     [SerializeField] public GameObject background; 
     [SerializeField] public GameObject marco;
 
     [SerializeField] public GameObject sprite;
-    private Image titleRenderer;
+    private UnityEngine.UI.Image titleRenderer;
 
     public Dictionary<string, Dictionary<string, int[]>> MenuRecipes = new Dictionary<string, Dictionary<string, int[]>>();
     Dictionary<string, int[]> unlockableRecipes = new Dictionary<string, int[]>();
@@ -40,12 +47,18 @@ public class UI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        titleRenderer = sprite.GetComponent<Image>();
+        titleRenderer = sprite.GetComponent<UnityEngine.UI.Image>();
         background.SetActive(false);
         marco.SetActive(false);
         sprite.SetActive(false);
+           
 
         ButtonsSwitch(false);
+
+        ContinueButton.SetActive(false);
+        ExitButton.SetActive(false);
+        panel.SetActive(false);
+        panelBackground.SetActive(false);
 
         Grid.SetActive(false);
         MainTilemap.SetActive(false);
@@ -89,6 +102,14 @@ public class UI : MonoBehaviour
                 Building.current.Disappear();
             }
         }
+        else if(Input.GetKeyUp(KeyCode.Escape) & menuUp == "noMenu")
+        {
+            menuUp = "pause";
+            ContinueButton.SetActive(true);
+            ExitButton.SetActive(true);
+            panel.SetActive(true);
+            panelBackground.SetActive(true);
+        }
         else if (Input.GetKeyUp(KeyCode.B) & menuUp == "noMenu")
         {
             OpenMenu($"building");
@@ -98,6 +119,7 @@ public class UI : MonoBehaviour
 
     public void OpenMenu(string title)
     {
+        Time.timeScale = 0;
         Debug.Log("Pasamos a" + title);
         menuUp = title;
         titleRenderer.sprite = Resources.Load<Sprite>($"titulo_" + title);
@@ -112,6 +134,7 @@ public class UI : MonoBehaviour
 
     public void CloseMenu()
     {
+        Time.timeScale = 1;
         menuUp = "noMenu";
         //Debug.Log("Pasamos a noMenu");
         background.SetActive(false);
@@ -119,10 +142,20 @@ public class UI : MonoBehaviour
         sprite.SetActive(false);
 
         ButtonsSwitch(false);
+        ContinueButton.SetActive(false);
+        ExitButton.SetActive(false);
+        panel.SetActive(false);
+        panelBackground.SetActive(false);
+
 
         Grid.SetActive(false);
         MainTilemap.SetActive(false);
         TempTilemap.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void CheckCraft(int numero)
@@ -216,11 +249,11 @@ public class UI : MonoBehaviour
                 //Debug.Log(positions[0].ToString());
                 //Debug.Log(positions[1].ToString());
                 //Debug.Log(keys[i]);
-                Buttons[i].transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(positions[1].ToString());
-                Buttons[i].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(positions[0].ToString());
-                Buttons[i].transform.GetChild(3).GetComponent<Image>().sprite = Resources.Load<Sprite>("num" + MenuRecipes[menuUp][keys[i]][positions[0]].ToString());
-                Buttons[i].transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("num" + MenuRecipes[menuUp][keys[i]][positions[1]].ToString());
-                Buttons[i].transform.GetChild(4).GetComponent<Image>().sprite = Resources.Load<Sprite>(keys[i]);
+                Buttons[i].transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>(positions[1].ToString());
+                Buttons[i].transform.GetChild(2).GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>(positions[0].ToString());
+                Buttons[i].transform.GetChild(3).GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("num" + MenuRecipes[menuUp][keys[i]][positions[0]].ToString());
+                Buttons[i].transform.GetChild(1).GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>("num" + MenuRecipes[menuUp][keys[i]][positions[1]].ToString());
+                Buttons[i].transform.GetChild(4).GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>(keys[i]);
             }
         }
     }
