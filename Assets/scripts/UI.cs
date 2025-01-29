@@ -41,11 +41,12 @@ public class UI : MonoBehaviour
     Dictionary<string, int[]> unlockableRecipes = new Dictionary<string, int[]>();
 
     int pipipopo;
+    AudioManager audioManager;
 
-    [SerializeField] AudioSource openMenuSfx;
     private void Awake()
     {
         current = this;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -104,6 +105,7 @@ public class UI : MonoBehaviour
             {
                 Building.current.Disappear();
             }
+            audioManager.PlayGeneralSfx(audioManager.failSfx);
         }
         else if(Input.GetKeyUp(KeyCode.Escape) & menuUp == "noMenu")
         {
@@ -116,7 +118,7 @@ public class UI : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.B) & menuUp == "noMenu")
         {
             OpenMenu($"building");
-            openMenuSfx.Play();
+            audioManager.PlayGeneralSfx(audioManager.ipadMenuSfx);
         }
         enemyCounter += Time.deltaTime;
         if (enemyCounter > 10)
@@ -138,7 +140,6 @@ public class UI : MonoBehaviour
         marco.SetActive(true);
         sprite.SetActive(true);
 
-        openMenuSfx.Play();
         Debug.Log(MenuRecipes[menuUp].Keys.ToArray().Length);
         ButtonsSwitch(true, MenuRecipes[menuUp].Keys.ToArray().Length, true);
     }

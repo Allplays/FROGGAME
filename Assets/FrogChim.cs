@@ -15,6 +15,12 @@ public class FrogChim : MonoBehaviour
 
     Vector3 offset;
 
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Update()
     {
         distanceBetween = Vector2.Distance(transform.position, animeGirl.transform.position);
@@ -41,6 +47,7 @@ public class FrogChim : MonoBehaviour
         {
             isBeingDragged = true;
             offset = transform.position - GetMouseWorldPosition();
+            audioManager.PlayChimiSfx(audioManager.chimiPinchSfx);
         }
     }
 
@@ -61,6 +68,7 @@ public class FrogChim : MonoBehaviour
             working = true;
             counter = 0;
             Debug.Log("Recogiendo item");
+            audioManager.PlayChimiSfx(audioManager.chimiCollectSfx);
         }
     }
 

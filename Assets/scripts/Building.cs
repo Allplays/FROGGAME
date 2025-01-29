@@ -15,8 +15,7 @@ public class Building : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public static Building current;
 
-    [SerializeField] AudioSource buildSuccessSfx;
-    [SerializeField] AudioSource buildFailSfx;
+    AudioManager audioManager;
     void Start()
     {
         spriteRenderer = sprite.GetComponent<SpriteRenderer>();
@@ -26,6 +25,7 @@ public class Building : MonoBehaviour
     private void Awake()
     {
         current = this;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     #region Build Methods
@@ -39,7 +39,7 @@ public class Building : MonoBehaviour
         if (GridBuildingSystem.current.CanTakeArea(areaTemp))
         {
             Place();
-            buildSuccessSfx.Play();
+            audioManager.PlayGeneralSfx(audioManager.SuccessSfx);
             return ;
         }
         return ;
@@ -55,7 +55,6 @@ public class Building : MonoBehaviour
         UI.current.CloseMenu();
         Destroy(placeButton.gameObject);
         Destroy(disappearButton.gameObject);
-        buildSuccessSfx.Play();
     }
 
     #endregion
@@ -91,7 +90,7 @@ public class Building : MonoBehaviour
 
     public void Disappear()
     {
-        
+        audioManager.PlayGeneralSfx(audioManager.failSfx);
         Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
@@ -102,6 +101,6 @@ public class Building : MonoBehaviour
         Destroy(disappearButton.gameObject);
         Destroy(sprite);
         Destroy(current);
-        buildFailSfx.Play();
+
     }
 }

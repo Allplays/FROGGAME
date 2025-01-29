@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "boto\u0301n_continue_arriba_0": 3993310421815961451
+      "boto\u0301n_continue_arriba_1": 7426435893614902975
+      "boto\u0301n_continue_arriba_2": -283072534387024678
+      "boto\u0301n_continue_arriba_3": 9070847011398116377
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

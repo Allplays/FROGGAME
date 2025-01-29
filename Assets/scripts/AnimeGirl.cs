@@ -5,11 +5,20 @@ public class AnimeGirl : MonoBehaviour
     public static AnimeGirl current;
 
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private Animator animator; 
-    [SerializeField] AudioSource animeGirlStepSfx;
+    [SerializeField] private Animator animator;
+
+    AudioManager audioManager;
+
+    float stepsSfxTimer;
+
     private void Awake()
     {
         current = this;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+    private void Start()
+    {
+        stepsSfxTimer = audioManager.stepsSfxDuration;
     }
     void Update()
     {
@@ -37,13 +46,20 @@ public class AnimeGirl : MonoBehaviour
             isMovingRight = true; 
         }
 
-        
-        //if (Input.GetKeyDown("w")) animeGirlStepSfx.Play();
-        //else if (Input.GetKeyDown("s")) animeGirlStepSfx.Play();
-        //else if (Input.GetKeyDown("a")) animeGirlStepSfx.Play();
-        //else if (Input.GetKeyDown("d")) animeGirlStepSfx.Play();
-        
-        //if (!isMovingDown && !isMovingLeft && !isMovingRight && !isMovingUp) animeGirlStepSfx.Stop();
+        if (isMovingUp | isMovingDown | isMovingLeft | isMovingRight)
+        { 
+            stepsSfxTimer += Time.deltaTime;
+            if (stepsSfxTimer >= audioManager.stepsSfxDuration)
+            { 
+                audioManager.PlayAnimeGirlSfx(audioManager.stepsSfx);
+                stepsSfxTimer = 0;
+            }
+        }
+        else
+        { 
+            audioManager.StopAnimeGirlSfx(); 
+            stepsSfxTimer = audioManager.stepsSfxDuration;
+        }
 
         transform.position = pos;
         transform.rotation = Quaternion.identity;

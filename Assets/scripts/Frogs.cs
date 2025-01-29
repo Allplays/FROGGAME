@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Frogs : MonoBehaviour
 {
@@ -6,10 +7,6 @@ public class Frogs : MonoBehaviour
     [SerializeField] private GameObject poopPrefab;
     [SerializeField] private float speed = 2f;
     [SerializeField] private float poopDelay = 4f;
-
-    [SerializeField] AudioSource idleSfx;
-    [SerializeField] AudioSource pinchSfx;
-    [SerializeField] AudioSource munchSfx;
 
     private float distanceBetween;
     private Vector3 offset;
@@ -20,7 +17,11 @@ public class Frogs : MonoBehaviour
     private bool isNearRot = false;
     private GameObject currentRot = null;
 
-    private float idleSfxTimer = 0f;
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
@@ -29,14 +30,15 @@ public class Frogs : MonoBehaviour
 
     void Update()
     {
-        
+
         frogAnimator.SetBool("isDragged", isBeingDragged);
 
         if (isDropped && isNearRot)
         {
             frogAnimator.SetBool("isEating", true);
+            if (poopTimer == 0)
+            { audioManager.PlayLennonSfx(audioManager.lennonMunchSfx); }
             poopTimer += Time.deltaTime;
-            
 
             if (poopTimer >= poopDelay)
             {
@@ -50,7 +52,7 @@ public class Frogs : MonoBehaviour
                     Destroy(currentRot); 
                     currentRot = null; 
                     isNearRot = false;
-                    idleSfx.Play();
+                    audioManager.PlayLennonSfx(audioManager.lennonIdleSfx);
                 }
             }
         }
@@ -59,10 +61,7 @@ public class Frogs : MonoBehaviour
             frogAnimator.SetBool("isEating", false);
             poopTimer = 0f;
             isDropped = false;
-
-            idleSfxTimer = Random.Range(0, 1);
-            if (idleSfxTimer >= 0.2)
-            { idleSfx.Play(); }
+            audioManager.PlayLennonSfx(audioManager.lennonIdleSfx);
         }
 
         
@@ -76,8 +75,7 @@ public class Frogs : MonoBehaviour
     void OnMouseDown()
     {
         isBeingDragged = true;
-        idleSfx.Stop();
-        pinchSfx.Play();
+        audioManager.PlayLennonSfx(audioManager.lennonPinchSfx);
         offset = transform.position - GetMouseWorldPosition();
     }
 
@@ -93,11 +91,8 @@ public class Frogs : MonoBehaviour
         {
             isBeingDragged = false;
             isDropped = true; 
-            //idleSfx.Play();
 
         }
-        //if (isNearRot)
-        //{ munchSfx.Play(); idleSfx.Stop(); }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -105,9 +100,9 @@ public class Frogs : MonoBehaviour
         if (collision.CompareTag("Rot")) 
         {
             isNearRot = true;
-            currentRot = collision.gameObject; 
+            currentRot = collision.gameObject;
             //currentRot = collision.gameObject; // Guarda el objeto "Rot" con el que está colisionando
-      
+            
         }
     }
 
@@ -117,8 +112,6 @@ public class Frogs : MonoBehaviour
         {
             isNearRot = false;
             currentRot = null; 
-            //munchSfx.Stop();
-            //idleSfx.Play();
         }
     }
 

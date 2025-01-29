@@ -15,6 +15,15 @@ public class enemy : MonoBehaviour
     private float speed = 3f;
 
     private SpriteRenderer spriteRenderer;
+
+    float enemyIdleSfxTimer;
+
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         spriteRenderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
@@ -42,6 +51,7 @@ public class enemy : MonoBehaviour
             Debug.Log("Mori");
             dead = true;
             spriteRenderer.sprite = deathSprite;
+            audioManager.PlayEnemySfx(audioManager.enemyDeathSfx);
 
         }
         else if (animationCounter > 100 & !dead)
@@ -70,5 +80,14 @@ public class enemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(3f, 5f), speed * Time.deltaTime);
         }
 
+        if (!dead)
+        {
+            enemyIdleSfxTimer += Time.deltaTime;
+            if (enemyIdleSfxTimer >= audioManager.enemyIdleSfxDuration)
+            {
+                audioManager.PlayEnemySfx(audioManager.enemyIdleSfx);
+                enemyIdleSfxTimer = -7;
+            }
+        }
     }
 }
